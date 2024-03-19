@@ -10,14 +10,14 @@ class juegoBolos {
     }
 
     getPuntaje() {
-        let i = 0;
+        let indiceFrame = 0;
         for (let frame = 0; frame < 10; frame++) {
-          if (this.lanzamientos[i] + this.lanzamientos[i + 1] === 10) { // spare
-            this.puntaje += 10 + this.lanzamientos[i + 2];
-            i += 2;
+          if (this.esSpare(indiceFrame)) { // spare
+            this.puntaje += 10 + this.lanzamientos[indiceFrame + 2];
+            indiceFrame += 2;
           } else {
-            this.puntaje += this.lanzamientos[i] + this.lanzamientos[i + 1];
-            i += 2;
+            this.puntaje += this.lanzamientos[indiceFrame] + this.lanzamientos[indiceFrame + 1];
+            indiceFrame += 2;
           }
         }
         return this.puntaje;
@@ -29,6 +29,10 @@ class juegoBolos {
         {
           this.lanzamiento(pinos);
         }
+    }
+    esSpare(indiceFrame)
+    {
+        return (this.lanzamientos[indiceFrame] + this.lanzamientos[indiceFrame + 1] === 10);
     }
 }
 
