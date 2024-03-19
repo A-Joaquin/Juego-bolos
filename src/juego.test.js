@@ -43,5 +43,11 @@ describe("Juego De Bolos", () => {
     juego.lanzamientosFuncion(16,0)
     expect(juego.getPuntaje()).toEqual(24);
   });
+
+  it("Deberia calcular puntaje de los 10 lanzamientos perfectos", () => {
+    let juego = new juegoBolos(); // Crear una instancia de la clase 'juegoBolos'
+    juego.lanzamientosFuncion(12,10)
+    expect(juego.getPuntaje()).toEqual(300);
+  });
 });
 
