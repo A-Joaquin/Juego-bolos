@@ -12,14 +12,20 @@ class juegoBolos {
     getPuntaje() {
         let indiceFrame = 0;
         for (let frame = 0; frame < 10; frame++) {
-          if (this.esSpare(indiceFrame)) { // spare
-            this.puntaje += 10 + this.lanzamientos[indiceFrame + 2];
+          if(this.esStrike(indiceFrame))
+          {
+            this.puntaje+=10+this.strikeBonus(indiceFrame);
+            indiceFrame++;
+          }
+          else if (this.esSpare(indiceFrame)) { // spare
+            this.puntaje += 10 + this.spareBonus(indiceFrame)
             indiceFrame += 2;
           } else {
-            this.puntaje += this.lanzamientos[indiceFrame] + this.lanzamientos[indiceFrame + 1];
+            this.puntaje += this.sumaDeLasBolasEnFrame(indiceFrame);
             indiceFrame += 2;
           }
         }
+        //console.log(this.puntaje);
         return this.puntaje;
         
     }
@@ -32,8 +38,25 @@ class juegoBolos {
     }
     esSpare(indiceFrame)
     {
-        return (this.lanzamientos[indiceFrame] + this.lanzamientos[indiceFrame + 1] === 10);
+        return (this.lanzamientos[indiceFrame] + this.lanzamientos[indiceFrame + 1] == 10);
     }
+    spareBonus(indiceFrame)
+    {
+        return this.lanzamientos[indiceFrame + 2];
+    }
+    esStrike(indiceFrame)
+    {
+        return this.lanzamientos[indiceFrame] === 10;
+    }
+    strikeBonus(indiceFrame)
+    {
+        return this.lanzamientos[indiceFrame + 1] + this.lanzamientos[indiceFrame + 2];
+    }
+    sumaDeLasBolasEnFrame(indiceFrame)
+    {
+        return this.lanzamientos[indiceFrame] + this.lanzamientos[indiceFrame + 1];
+    }
+
 }
 
 module.exports = juegoBolos;
