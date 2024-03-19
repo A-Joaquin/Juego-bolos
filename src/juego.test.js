@@ -25,4 +25,14 @@ describe("Juego De Bolos", () => {
     }
     expect(juego.getPuntaje()).toEqual(20);
   });
+
+  it("Deberia calcular puntaje de los 20 lanzamientos con spare incluido frame 1:5,5 frame 2:3,0 .... fraMe N:0,0", () => {
+    let juego = new juegoBolos(); // Crear una instancia de la clase 'juegoBolos'
+    juego.lanzamiento(5);
+    juego.lanzamiento(5);
+    juego.lanzamiento(3);
+    juego.lanzamientosFuncion(17,0)
+    expect(juego.getPuntaje()).toEqual(16);
+  });
+
 });
