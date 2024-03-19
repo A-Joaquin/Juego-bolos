@@ -1,8 +1,8 @@
 class juegoBolos
 {
-    jugada(pinos)
-    {
 
+    lanzamiento(pinos)
+    {
     }
     getPuntaje()
     {
